@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import React, {useEffect, useState} from 'react';
+=======
+import React, { useState , useEffect} from 'react';
+>>>>>>> cd912c0394a99ae47d041df91432369bcb29e76e
 
 import Card from '../UI/Card/Card';
 import classes from './Login.module.css';
@@ -11,10 +15,25 @@ const Login = (props) => {
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
-  const emailChangeHandler = (event) => {
-    setEnteredEmail(event.target.value);
+  useEffect(()=>{
+    const identifier = setTimeout(()=>{
+      console.log('set timer')
+      setFormIsValid(enteredEmail.includes('@') && enteredPassword.trim().length>6)
+    },500)
+
+  return ()=> {
+    console.log('clean up')
+    clearTimeout((identifier));
+  }
+  },[enteredEmail, enteredPassword])
 
 
+  const emailChangeHandler = (event) => {setEnteredEmail(event.target.value);
+
+<<<<<<< HEAD
+
+=======
+>>>>>>> cd912c0394a99ae47d041df91432369bcb29e76e
   };
 
   useEffect(() => {
@@ -33,7 +52,10 @@ const Login = (props) => {
 
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
+<<<<<<< HEAD
 
+=======
+>>>>>>> cd912c0394a99ae47d041df91432369bcb29e76e
   };
 
   const validateEmailHandler = () => {
